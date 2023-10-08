@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    {% comment %} H E A D E R {% endcomment %}
+    {% include "Entry/partials/header.html" %}
+
+
+    {% comment %} if not loged in: {% endcomment %}
+        {% if new_user_details == None %}
+        <h1>Welcome to the Garderning App<h1>
+        <button> <a href= "../signup/"> Signup </a> </button>
+        <button> <a href= "../login/"> Login </a> </button>
+        <h1>About Us</h1>
+        {% block about %}
+        {% comment %} home page default contents {% endcomment %}
+        {% endblock about %}
+
+
+    {% comment %} after login/signup  {% endcomment %}
+    {% else %}
+        <h1>Welcome to the Garderning App, {{ new_user_details }}</h1>
+        {% block posts %}
+        {% comment %} Posts ranked by likes {% endcomment %}
+        {% endblock posts %}
+        {% endif %}
+
+    {% comment %} F O O T E R {% endcomment %}
+    {% include "Entry/partials/footer.html" %}
+</body>
+</html>
