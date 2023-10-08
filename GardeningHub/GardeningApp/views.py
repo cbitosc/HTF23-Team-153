@@ -13,7 +13,10 @@ def takeMeHome(requst):
 
 def homePage(request, username):
     context = {"new_user_details": username}
-    return render(request, "Entry/home.html", context)
+    if checkUsernameDuplication(username):
+        return render(request, "Entry/home.html", context)
+    else:
+        return redirect("/GardeningApp/login/")
 
 
 def login(request):
