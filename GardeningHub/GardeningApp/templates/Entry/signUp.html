@@ -1,0 +1,17 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+  </head>
+<body>
+  <h3>Signup</h3>
+  <form action="" method="POST">
+    {% csrf_token %} {{ new_user_details.as_p }}
+    {% if issue == "UsernameDuplication" %}
+    <p style="color:red;">Username not available</p>
+    {% endif %}
+    <button type="submit" > Sign Up </button>
+    <br>
+    <a href="../login/">have an account?</a>
+  </form>
+</body>
